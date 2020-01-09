@@ -39,8 +39,8 @@ objS3.obtenerImagen =  (tipo, nombreArchivo) => {
     return new Promise((resP,rej) => {
         let bucket;
         (tipo === 'Clientes') ? 
-            bucket = 'imagenesclientes-proyectostore' 
-        :   bucket = 'imagenesproductos-proyectostore' 
+            bucket = 'imagenesclientes-proyectostore2' 
+        :   bucket = 'imagenesproductos-proyectostore2' 
         const params = {
             Bucket: bucket,
             Key: nombreArchivo

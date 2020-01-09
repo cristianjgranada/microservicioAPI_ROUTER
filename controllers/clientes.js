@@ -37,7 +37,7 @@ objClientes.actualizarImagen = async (req,res) => {
     console.log("-".repeat(30) );
     console.log(dataS3);
     if (dataS3 && dataS3.codigo >=0){
-        let data = await axios.put( `http://localhost:${puerto}/API/clientes/actualizarurl`, {id , url: dataS3.ruta} )
+        let data = await axios.put( `${url}/API/clientes/actualizarurl`, {id , url: dataS3.ruta} )
         res.json ( data.data  ) 
     }else {
         return res.json({codigo:-98, mensaje: 'parametros insuficientes'})
@@ -45,7 +45,7 @@ objClientes.actualizarImagen = async (req,res) => {
 }
 
 objClientes.eliminarCliente =async (req,res) => {
-    let data = await axios.delete( `http://localhost:${puerto}/API/clientes?clienteid=` + req.query.clienteid )
+    let data = await axios.delete( `${url}/API/clientes?clienteid=` + req.query.clienteid )
     res.json ( data.data  ) 
 } 
 
