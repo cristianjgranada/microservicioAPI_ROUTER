@@ -1,28 +1,28 @@
 const axios = require('axios');
 const s3 = require('../AWS/S3')
 
-let puerto = 4001
+let url = process.env.URL_CLIENTES ||  `http://localhost:4001` 
 
 const objClientes = {}
 
 objClientes.obtenerClientes = async (req,res) => {
-    let data = await axios.get( `http://localhost:${puerto}/API/clientes`)
+    let data = await axios.get( `${url}/API/clientes`)
     res.json ( data.data  ) 
 }
 
 objClientes.obtenerCliente = async (req,res) => {
     let id = req.params.clienteid || ''
-    let data = await axios.get( `http://localhost:${puerto}/API/clientes/${id}`)
+    let data = await axios.get( `${url}/API/clientes/${id}`)
     res.json ( data.data  ) 
 }
 
 objClientes.registrarCliente = async (req,res) => {    
-    let data = await axios.post( `http://localhost:${puerto}/API/clientes`,req.body )
+    let data = await axios.post( `${url}/API/clientes`,req.body )
     res.json ( data.data  ) 
 }
 
 objClientes.actualizarCliente = async(req,res) => {
-    let data = await axios.put( `http://localhost:${puerto}/API/clientes`,req.body )
+    let data = await axios.put( `${url}/API/clientes`,req.body )
     res.json ( data.data  ) 
 }
 

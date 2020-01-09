@@ -5,9 +5,9 @@ const objS3 = {}
 
 aws.config.update({
     //httpOptions: { agent: proxy('http://hermes.pragma.com.co:8080') },
-    accessKeyId: 'AKIA6ODAEJI4UZVD7EUJ',
-    secretAccessKey: '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',
-    region: 'us-east-2'
+    accessKeyId:  process.env.AWS_KEY ,
+    secretAccessKey: process.env.AWS_SECRET ,
+    region: process.env.AWS_REGION || 'us-east-2'
 })
  
 const s3 = new aws.S3()
@@ -16,8 +16,8 @@ objS3.cargarImagen = async (tipo, nombreArchivo) => {
     return new Promise((resP,rej) => {
         let bucket;
         (tipo === 'Clientes') ? 
-            bucket = 'imagenesclientes-proyectostore' 
-        :   bucket = 'imagenesproductos-proyectostore'
+            bucket = 'imagenesclientes-proyectostore2' 
+        :   bucket = 'imagenesproductos-proyectostore2'
         s3.upload ({
             Bucket:bucket,
             Body: fs.readFileSync( `./uploads/${nombreArchivo}`),
